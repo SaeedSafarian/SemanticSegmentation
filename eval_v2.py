@@ -248,7 +248,6 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
                 _class = cfg.dataset.class_names[classes[j]]
                 print(_class)
                 text_str = '%s: %.2f' % (_class, score) if args.display_scores else _class
-                print(text_str)
 
                 font_face = cv2.FONT_HERSHEY_DUPLEX
                 font_scale = 0.6
@@ -261,8 +260,8 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
 
                 cv2.rectangle(img_numpy, (x1, y1), (x1 + text_w, y1 - text_h - 4), color, -1)
                 cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
-            
-    
+
+    print(text_str)
     return img_numpy
 
 def prep_benchmark(dets_out, h, w):
