@@ -189,9 +189,9 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
     if args.display_masks and cfg.eval_mask_branch and num_dets_to_consider > 0:
         # After this, mask is of size [num_dets, h, w, 1]
         masks = masks[:num_dets_to_consider, :, :, None]
-        for j in reversed(range(num_dets_to_consider)):
-		  _class = cfg.dataset.class_names[classes[j]]
-		  print(_class)
+        #for j in reversed(range(num_dets_to_consider)):
+		#  _class = cfg.dataset.class_names[classes[j]]
+		# print(_class)
         # Prepare the RGB images for each mask given their color (size [num_dets, h, w, 1])
         colors = torch.cat([get_color(j, on_gpu=img_gpu.device.index).view(1, 1, 1, 3) for j in range(num_dets_to_consider)], dim=0)
         masks_color = masks.repeat(1, 1, 1, 3) * colors * mask_alpha
@@ -261,9 +261,9 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
                 cv2.rectangle(img_numpy, (x1, y1), (x1 + text_w, y1 - text_h - 4), color, -1)
                 cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
 
-        print(text_str)
+    
     return img_numpy, text_str
-    print(text_str)
+
 
 def prep_benchmark(dets_out, h, w):
     with timer.env('Postprocess'):
