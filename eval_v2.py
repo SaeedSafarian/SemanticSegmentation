@@ -259,8 +259,9 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
                 text_color = [255, 255, 255]
 
                 cv2.rectangle(img_numpy, (x1, y1), (x1 + text_w, y1 - text_h - 4), color, -1)
-		cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
+                cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
 
+		
     return img_numpy
     print(text_str)
 	classs = cfg.dataset.class_names[classes]
