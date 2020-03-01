@@ -263,6 +263,7 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
 
         print(text_str)
     return img_numpy
+    print(_class)
     print(text_str)
 
 def prep_benchmark(dets_out, h, w):
