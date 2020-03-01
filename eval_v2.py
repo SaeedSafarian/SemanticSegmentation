@@ -262,6 +262,7 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
                 cv2.putText(img_numpy, text_str, text_pt, font_face, font_scale, text_color, font_thickness, cv2.LINE_AA)
 
         print(text_str)
+	print(_class)
     return img_numpy
     print(_class)
     print(text_str)
