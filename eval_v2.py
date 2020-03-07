@@ -189,7 +189,7 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
     if args.display_masks and cfg.eval_mask_branch and num_dets_to_consider > 0:
         # After this, mask is of size [num_dets, h, w, 1]
         # masks = masks[:num_dets_to_consider, :, :, None]
-        masks = masks[numpy.where(classes == 0)[0], :, :, None]
+        masks = masks[classes == 0, :, :, None]
         num_dets_to_consider = masks.shape[0]
         
         
