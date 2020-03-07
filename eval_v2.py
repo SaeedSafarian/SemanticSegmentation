@@ -199,6 +199,7 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
 
         # This is 1 everywhere except for 1-mask_alpha where the mask is
         print(classes)
+        # In this version we choose: mask_alpha=1 
         # inv_alph_masks = masks * (-mask_alpha) + 1
         # inv_alph_masks = masks * (-mask_alpha)
         inv_alph_masks = 1 - masks
