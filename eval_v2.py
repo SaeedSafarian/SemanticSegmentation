@@ -196,8 +196,10 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
         masks_color = masks.repeat(1, 1, 1, 3) * colors * mask_alpha
 
         # This is 1 everywhere except for 1-mask_alpha where the mask is
-        # inv_alph_masks = masks * (-mask_alpha) + 1
-        inv_alph_masks = masks * (-mask_alpha)
+        classss = list(classes.cpu().numpy().astype(int))
+        print(classss)
+        inv_alph_masks = masks * (-mask_alpha) + 1
+        # inv_alph_masks = masks * (-mask_alpha)
         
         
         # I did the math for this on pen and paper. This whole block should be equivalent to:
