@@ -188,7 +188,9 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
     # I wish I had access to OpenGL or Vulkan but alas, I guess Pytorch tensor operations will have to suffice
     if args.display_masks and cfg.eval_mask_branch and num_dets_to_consider > 0:
         # After this, mask is of size [num_dets, h, w, 1]
-        masks = masks[:num_dets_to_consider, :, :, None]
+        # masks = masks[:num_dets_to_consider, :, :, None]
+        masks = masks[classes == 0, :, :, None]
+        num_dets_to_consider = masks.shape[0]
         
         
         # Prepare the RGB images for each mask given their color (size [num_dets, h, w, 1])
@@ -199,7 +201,7 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
         print(classes)
         inv_alph_masks = masks * (-mask_alpha) + 1
         # inv_alph_masks = masks * (-mask_alpha)
-        
+        inv_alph_masks = 1-inv_alph_masks
         
         # I did the math for this on pen and paper. This whole block should be equivalent to:
         #    for j in range(num_dets_to_consider):
