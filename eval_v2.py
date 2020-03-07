@@ -201,8 +201,8 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
         print(classes)
         # inv_alph_masks = masks * (-mask_alpha) + 1
         # inv_alph_masks = masks * (-mask_alpha)
-        inv_alph_masks = masks
-        
+        inv_alph_masks = 1 - masks
+        maskId = inv_alph_masks.prod(dim=0)
         # I did the math for this on pen and paper. This whole block should be equivalent to:
         #    for j in range(num_dets_to_consider):
         #        img_gpu = img_gpu * inv_alph_masks[j] + masks_color[j]
@@ -213,7 +213,7 @@ def prep_display(dets_out, img, h, w, undo_transform=True, class_color=False, ma
             masks_color_summand += masks_color_cumul.sum(dim=0)
 
         # img_gpu = img_gpu * inv_alph_masks.prod(dim=0) + masks_color_summand
-        img_gpu = img_gpu * inv_alph_masks.prod(dim=0)
+        img_gpu = img_gpu *(1-maskId) 
 
     
     if args.display_fps:
