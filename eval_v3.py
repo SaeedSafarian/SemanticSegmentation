@@ -77,7 +77,7 @@ def parse_args(argv=None):
                         help='The output file for coco bbox results if --coco_results is set.')
     parser.add_argument('--mask_det_file', default='results/mask_detections.json', type=str,
                         help='The output file for coco mask results if --coco_results is set.')
-    parser.add_argument('--config', default=yolact_plus_resnet50_config,
+    parser.add_argument('--config', default='yolact_plus_resnet50_config',
                         help='The config object to use.')
     parser.add_argument('--output_web_json', dest='output_web_json', action='store_true',
                         help='If display is not set, instead of processing IoU values, this dumps detections for usage with the detections viewer web thingy.')
@@ -99,7 +99,7 @@ def parse_args(argv=None):
                         help='Do not crop output masks with the predicted bounding box.')
     parser.add_argument('--image', default=None, type=str,
                         help='A path to an image to use for display.')
-    parser.add_argument('--images', default=test_images:output_images, type=str,
+    parser.add_argument('--images', default='test_images:output_images', type=str,
                         help='An input folder of images and output folder to save detected images. Should be in the format input->output.')
     parser.add_argument('--video', default=None, type=str,
                         help='A path to a video to evaluate on. Passing in a number will use that index webcam.')
